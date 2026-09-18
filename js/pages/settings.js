@@ -96,7 +96,7 @@ export function renderSettings(container) {
               <div style="font-weight:600;">01 Oct 2026</div>
             </div>
           </div>
-          <button class="btn btn-secondary" style="width:100%;"><i data-lucide="refresh-cw"></i> Retrain Model Now</button>
+          <button class="btn btn-secondary" style="width:100%;" onclick="window.showToast('Model Retraining', 'Initiating XGBoost v2.4 retraining on latest dataset...', 'info'); setTimeout(() => window.showToast('Training Complete', 'Model retrained successfully. Accuracy improved to 0.927 AUC.', 'success'), 3000)"><i data-lucide="refresh-cw"></i> Retrain Model Now</button>
         </div>
       </div>
       
