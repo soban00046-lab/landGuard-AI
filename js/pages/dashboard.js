@@ -137,7 +137,7 @@ export function renderDashboard(container) {
                     <td style="font-weight:500;">${p.name}</td>
                     <td>${p.state}</td>
                     <td>${p.district}</td>
-                    <td><span class="risk-score-circle high">${p.riskScore}</span></td>
+                    <td><span class="risk-score-circle high has-tooltip" data-tooltip="AI Score derived from 6 delay factors">${p.riskScore}</span></td>
                     <td>${p.shapValues[0]?.feature || 'Multiple'}</td>
                     <td><button class="btn btn-primary btn-sm view-btn" data-id="${p.id}">View</button></td>
                   </tr>
@@ -244,7 +244,7 @@ function renderProjectDetail(project) {
         `).join('')}
       </div>
       
-      <button class="btn btn-primary" style="margin-top:20px;width:100%;">
+      <button class="btn btn-primary" style="margin-top:20px;width:100%;" onclick="window.navigate('reports')">
         View Full Report →
       </button>
     </div>
@@ -340,3 +340,4 @@ function initStageChart(stats) {
     },
   });
 }
+
