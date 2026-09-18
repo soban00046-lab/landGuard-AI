@@ -97,7 +97,73 @@ export function renderProjects(container) {
     // Attach click handlers
     contentArea.querySelectorAll('.view-btn').forEach(btn => {
       btn.addEventListener('click', (e) => {
-        alert("Project details modal would open here for ID: " + e.target.dataset.id);
+        const id = e.target.dataset.id;
+        const project = filteredProjects.find(p => p.id === id);
+        if (!project) return;
+        
+        const html = `
+          <div style="display:flex;gap:24px;flex-wrap:wrap;">
+            <div style="flex:1;min-width:300px;">
+              <h3 style="margin-top:0;margin-bottom:16px;">Overview</h3>
+              <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Project ID</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.id}</td></tr>
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Type</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.type}</td></tr>
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Location</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.state}, ${project.district}</td></tr>
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Area</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.landArea} hectares</td></tr>
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Affected Families</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.affectedFamilies}</td></tr>
+                <tr><td style="padding:8px 0;border-bottom:1px solid #eee;color:var(--text-secondary);">Current Stage</td><td style="padding:8px 0;border-bottom:1px solid #eee;font-weight:600;text-align:right;">${project.currentStage}</td></tr>
+              </table>
+              <div style="margin-top:24px;">
+                <h4 style="margin-bottom:12px;">Financials</h4>
+                <div style="display:flex;justify-content:space-between;margin-bottom:4px;font-size:0.85rem;">
+                  <span>Disbursed: ₹${project.compensationDisbursed}Cr</span>
+                  <span>Total: ₹${project.compensationAmount}Cr</span>
+                </div>
+                <div style="height:8px;background:#e5e7eb;border-radius:4px;">
+                  <div style="height:8px;background:var(--accent-primary);border-radius:4px;width:${project.compensationStatus}%;"></div>
+                </div>
+              </div>
+            </div>
+            
+            <div style="flex:1;min-width:300px;">
+              <h3 style="margin-top:0;margin-bottom:16px;">AI Risk Analysis</h3>
+              <div style="background:var(--surface-bg);padding:16px;border-radius:8px;margin-bottom:20px;display:flex;justify-content:space-between;align-items:center;">
+                <div>
+                  <div style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:4px;">Calculated Risk Score</div>
+                  <div style="font-size:1.5rem;font-weight:bold;color:${project.riskColor};">${project.riskScore}/100</div>
+                </div>
+                <div class="risk-badge ${project.riskCategory.toLowerCase()}">${project.riskCategory} Risk</div>
+              </div>
+              
+              <h4 style="margin-bottom:12px;">Key Delay Factors</h4>
+              <div>
+                ${project.shapValues.slice(0, 3).map(sv => {
+                  const color = sv.impact > 0 ? (sv.impact > 10 ? 'var(--risk-high)' : 'var(--risk-medium)') : 'var(--risk-low)';
+                  const pct = Math.min(Math.abs(sv.impact) * 4, 100);
+                  return `
+                    <div class="delay-factor">
+                      <span class="label" style="min-width:120px;">${sv.feature}</span>
+                      <div class="bar-container">
+                        <div class="bar" style="width:${pct}%;background:${color};"></div>
+                      </div>
+                      <span class="percentage" style="color:${color};">${Math.abs(sv.impact).toFixed(0)}%</span>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+              
+              <div style="margin-top:24px;">
+                <button class="btn btn-primary" style="width:100%;" onclick="window.closeModal(); window.showToast('Report Generated', 'Full PDF report for ${project.id} is downloading.', 'success');">
+                  <i data-lucide="download" style="width:16px;margin-right:8px;"></i> Download Detailed Report
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+        
+        if (window.openModal) {
+          window.openModal(`${project.name}`, html);
+        }
       });
     });
   };
