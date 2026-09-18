@@ -26,8 +26,8 @@ export function renderReports(container) {
         <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Comprehensive breakdown of land acquisition progress and risks across all states.</p>
         <div style="height:120px;margin-bottom:16px;"><canvas id="miniChart1"></canvas></div>
         <div style="display:flex;gap:12px;">
-          <button class="btn btn-primary btn-sm" style="flex:1;">Generate</button>
-          <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> PDF</button>
+          <button class="btn btn-primary btn-sm" style="flex:1;" onclick="window.showToast('Generating Report', 'Gathering latest data from AI engine...', 'info'); setTimeout(() => window.showToast('Success', 'Report data compiled successfully.', 'success'), 1500)">Generate</button>
+          <button class="btn btn-secondary btn-sm" onclick="window.showToast('PDF Export', 'Preparing PDF document...', 'info'); setTimeout(() => window.showToast('Success', 'Document downloaded.', 'success'), 2000)"><i data-lucide="download"></i> PDF</button>
         </div>
       </div>
       
@@ -36,8 +36,8 @@ export function renderReports(container) {
         <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Identify bottleneck districts and analyze primary causes of acquisition delays.</p>
         <div style="height:120px;margin-bottom:16px;"><canvas id="miniChart2"></canvas></div>
         <div style="display:flex;gap:12px;">
-          <button class="btn btn-primary btn-sm" style="flex:1;">Generate</button>
-          <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> PDF</button>
+          <button class="btn btn-primary btn-sm" style="flex:1;" onclick="window.showToast('Generating Report', 'Gathering latest data from AI engine...', 'info'); setTimeout(() => window.showToast('Success', 'Report data compiled successfully.', 'success'), 1500)">Generate</button>
+          <button class="btn btn-secondary btn-sm" onclick="window.showToast('PDF Export', 'Preparing PDF document...', 'info'); setTimeout(() => window.showToast('Success', 'Document downloaded.', 'success'), 2000)"><i data-lucide="download"></i> PDF</button>
         </div>
       </div>
       
@@ -46,8 +46,8 @@ export function renderReports(container) {
         <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Evaluate efficiency at each acquisition stage (Notification to Possession).</p>
         <div style="height:120px;margin-bottom:16px;"><canvas id="miniChart3"></canvas></div>
         <div style="display:flex;gap:12px;">
-          <button class="btn btn-primary btn-sm" style="flex:1;">Generate</button>
-          <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> PDF</button>
+          <button class="btn btn-primary btn-sm" style="flex:1;" onclick="window.showToast('Generating Report', 'Gathering latest data from AI engine...', 'info'); setTimeout(() => window.showToast('Success', 'Report data compiled successfully.', 'success'), 1500)">Generate</button>
+          <button class="btn btn-secondary btn-sm" onclick="window.showToast('PDF Export', 'Preparing PDF document...', 'info'); setTimeout(() => window.showToast('Success', 'Document downloaded.', 'success'), 2000)"><i data-lucide="download"></i> PDF</button>
         </div>
       </div>
       
@@ -56,8 +56,8 @@ export function renderReports(container) {
         <p style="font-size:0.85rem;color:var(--text-secondary);margin-bottom:16px;">Historical tracking of AI risk scores to monitor improvements or degradations.</p>
         <div style="height:120px;margin-bottom:16px;"><canvas id="miniChart4"></canvas></div>
         <div style="display:flex;gap:12px;">
-          <button class="btn btn-primary btn-sm" style="flex:1;">Generate</button>
-          <button class="btn btn-secondary btn-sm"><i data-lucide="download"></i> PDF</button>
+          <button class="btn btn-primary btn-sm" style="flex:1;" onclick="window.showToast('Generating Report', 'Gathering latest data from AI engine...', 'info'); setTimeout(() => window.showToast('Success', 'Report data compiled successfully.', 'success'), 1500)">Generate</button>
+          <button class="btn btn-secondary btn-sm" onclick="window.showToast('PDF Export', 'Preparing PDF document...', 'info'); setTimeout(() => window.showToast('Success', 'Document downloaded.', 'success'), 2000)"><i data-lucide="download"></i> PDF</button>
         </div>
       </div>
 
