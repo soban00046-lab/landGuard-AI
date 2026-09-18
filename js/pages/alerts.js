@@ -130,3 +130,4 @@ export function renderAlerts(container) {
 
   if (window.lucide) lucide.createIcons();
 }
+
