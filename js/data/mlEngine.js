@@ -111,6 +111,32 @@ export function getDelayProbability(project) {
   };
 }
 
+// Simulate a new custom project prediction
+export function addAndEnrichProject(customProject) {
+  const p = {
+    ...customProject,
+    id: 'NEW-SIM-' + Math.floor(Math.random() * 10000),
+    lastUpdated: new Date().toISOString().split('T')[0],
+    notifications: []
+  };
+  
+  projects.unshift(p); // Add to beginning of mock list so it shows up immediately
+  
+  const riskScore = calculateRiskScore(p);
+  const riskCategory = getRiskCategory(riskScore);
+  const shapValues = generateShapValues(p);
+  
+  return {
+    ...p,
+    riskScore,
+    riskCategory,
+    riskColor: getRiskColor(riskCategory),
+    shapValues,
+    recommendations: generateRecommendations(p, shapValues),
+    delayProbability: getDelayProbability(p),
+  };
+}
+
 // Get all projects with computed risk data
 export function getEnrichedProjects() {
   return projects.map(p => {
