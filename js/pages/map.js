@@ -125,7 +125,7 @@ export function renderMap(container) {
                 <div style="height:4px;background:var(--accent-primary);border-radius:2px;width:${p.compensationStatus}%;"></div>
               </div>
             </div>
-            <button class="btn btn-primary btn-sm" style="width:100%;" onclick="alert('View project ${p.id}')">View Details</button>
+            <button class="btn btn-primary btn-sm" style="width:100%;" onclick="window.showProjectModal('${p.id}')">View Details</button>
           </div>
         `)
         .addTo(markersLayer);
@@ -139,3 +139,4 @@ export function renderMap(container) {
     }
   });
 }
+
