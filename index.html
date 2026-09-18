@@ -47,7 +47,6 @@
                 <div class="nav-item" data-page="projects">
                     <i data-lucide="folder-kanban" class="icon"></i>
                     <span>Projects</span>
-                    <span class="badge">12</span>
                 </div>
                 <div class="nav-item" data-page="map">
                     <i data-lucide="map" class="icon"></i>
@@ -56,7 +55,6 @@
                 <div class="nav-item" data-page="alerts">
                     <i data-lucide="bell-ring" class="icon"></i>
                     <span>Alerts</span>
-                    <span class="badge" style="background: var(--risk-high);">3</span>
                 </div>
                 <div class="nav-item" data-page="reports">
                     <i data-lucide="file-bar-chart-2" class="icon"></i>
@@ -69,6 +67,10 @@
             </nav>
             
             <div class="sidebar-footer">
+                <div style="background: rgba(255,255,255,0.1); padding: 8px 12px; border-radius: 6px; margin-bottom: 12px; border-left: 3px solid var(--accent-primary);">
+                    <div style="font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; font-weight: 700; letter-spacing: 0.5px;">Govt of India</div>
+                    <div style="font-size: 0.8rem; font-weight: 500; color: white;">SIH26017 Demo</div>
+                </div>
                 <p>LANDGUARD v1.0</p>
                 <p>System Status: <span style="color: var(--risk-low);">Online</span></p>
             </div>
@@ -82,9 +84,28 @@
 
     <!-- App Logic -->
     <script type="module" src="js/app.js"></script>
+    <!-- Global Modal Container -->
+    <div class="modal-overlay" id="globalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">Project Details</h2>
+                <button class="modal-close" onclick="window.closeModal()">
+                    <i data-lucide="x" style="width:20px;height:20px;"></i>
+                </button>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Modal content injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Global Toast Container -->
+    <div id="toast-container"></div>
+
     <script>
         // Initialize icons for the static shell elements
         lucide.createIcons();
     </script>
 </body>
 </html>
+
