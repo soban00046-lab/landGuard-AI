@@ -13,6 +13,9 @@ export function renderDashboard(container) {
         <p>Monitor, analyse and act on potential project delays</p>
       </div>
       <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.openPredictionForm()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;">
+          <i data-lucide="brain-circuit" style="width:18px;height:18px;"></i> + Analyze New Project
+        </button>
         <span class="last-updated">📅 Last Updated: ${new Date().toLocaleDateString('en-IN', { day: '2-digit', month: 'short', year: 'numeric' })}, ${new Date().toLocaleTimeString('en-IN', { hour: '2-digit', minute: '2-digit' })}</span>
         <div class="notification-bell"><i data-lucide="bell"></i></div>
         <div class="admin-profile">
@@ -340,4 +343,3 @@ function initStageChart(stats) {
     },
   });
 }
-
