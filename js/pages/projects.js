@@ -174,6 +174,11 @@ export function renderProjects(container) {
         <h2>📂 All Projects Explorer</h2>
         <p>Comprehensive list of land acquisition projects</p>
       </div>
+      <div class="header-actions">
+        <button class="btn btn-primary" onclick="window.openPredictionForm()" style="display:flex;align-items:center;gap:6px;padding:8px 16px;">
+          <i data-lucide="brain-circuit" style="width:18px;height:18px;"></i> + Analyze New Project
+        </button>
+      </div>
     </div>
     
     <div class="card" style="margin-bottom: 24px;">
